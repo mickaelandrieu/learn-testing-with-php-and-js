@@ -1,0 +1,23 @@
+{
+    "name": "mickaelandrieu/learn-testing-with-php-and-js",
+    "description": "For pedagogic purposes only",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mickaël Andrieu",
+            "email": "mickael.andrieu@prestashop.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Solvolabs\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Solvolabs\\": "tests/"
+        }
+    },
+}
