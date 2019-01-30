@@ -3,7 +3,7 @@
 namespace Tests\Solvolabs;
 
 use Solvolabs\Calculator;
-use PHPunit\Framework\TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * PHPUnit tests for Calculator Class.

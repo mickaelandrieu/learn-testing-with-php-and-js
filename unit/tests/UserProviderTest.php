@@ -3,7 +3,7 @@
 namespace Tests\Solvolabs;
 
 use Solvolabs\UserProvider;
-use PHPunit\Framework\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class UserProviderTestTest extends TestCase
 {
