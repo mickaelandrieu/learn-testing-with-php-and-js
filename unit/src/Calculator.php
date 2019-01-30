@@ -2,6 +2,8 @@
 
 namespace Solvolabs;
 
+use InvalidArgumentException;
+
 /**
  * This class is used to realize some basic calculations.
  * For training purposes only, use bc_math functions instead.
@@ -20,7 +22,9 @@ class Calculator
      * @param float $initialValue
      */
     public function __construct($initialValue = 0)
-    {
+    {        
+        $this->isNumber($initialValue);
+
         $this->result = $initialValue;
     }
 
@@ -29,6 +33,7 @@ class Calculator
      */
     public function add($number)
     {
+        $this->isNumber($number);
         $this->result = $this->result + $number;
     }
 
@@ -37,22 +42,30 @@ class Calculator
      */
     public function minus($number)
     {
+        $this->isNumber($number);
         $this->result = $this->result - $number;
     }
 
     /**
      * @param float $number A number.
      */
-    public static function multiply($number)
+    public function multiply($number)
     {
+        $this->isNumber($number);
         $this->result = $this->result * $number;
     }
 
     /**
      * @param float $number A number.
      */
-    public static function divideBy($number)
+    public function divideBy($number)
     {
+        $this->isNumber($number);
+
+        if ((double) $number === 0.0) {
+            throw new InvalidArgumentException('Division by 0 is not allowed');
+        }
+
         $this->result = $this->result / $number;
     }
 
@@ -63,6 +76,25 @@ class Calculator
      */
     public function result()
     {
-        return $this->result;
+        return (string) $this->result;
+    }
+
+    /**
+     * @return bool
+     * 
+     * @throws InvalidArgumentException
+     */
+    private function isNumber($value) {
+        if (is_numeric($value)) {
+            return true;
+        }
+
+        throw new InvalidArgumentException(
+            sprintf(
+                'Expect numeric value, got "%s" (%s)',
+                gettype($value),
+                (string) $value
+            ), 1
+        );
     }
 }
